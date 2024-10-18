@@ -1,0 +1,13 @@
+<form (ngSubmit)="onSubmit()">
+  <label for="name">Name:</label>
+  <input type="text" id="name" [(ngModel)]="name" name="name" required>
+
+  <label for="age">Age:</label>
+  <input type="number" id="age" [(ngModel)]="age" name="age" required>
+
+  <button type="submit">Create Node</button>
+</form>
+
+<p *ngIf="createdNode">
+  Created Node: {{ createdNode.name }} ({{ createdNode.age }} years old)
+</p>
