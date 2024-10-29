@@ -1,0 +1,210 @@
+Title,What it Does,Built With,By,Location
+davv ai,"davv_ai is an ai-powered assistant designed to simplify tasks across various operating systems through intuitive voice and text interactions. it offers users, including those who are visually impaired, the ability to perform a wide range of tasks by simply speaking commands like ""open google,"" ""search music on youtube,"" or ""shutdown computer."" one of its standout features is the streaming record function, once activated, you can start recording by simply saying ""hi google"", this feature allows users to record their sessions in real-time, providing immediate feedback and making interactions with the computer more accessible and manageable.
+davv_ai leverages the gemini ai api to interpret natural language commands and convert them into executable python code. the api processes the user's input, understanding the intent behind commands, and generates the corresponding code to execute the desired tasks. for more complex projects, such as developing a snake game or a shopping website, davv_ai uses the gemini ai api to generate the necessary code and files, enabling users to focus on customization and refinement. the integration with the gemini ai api is central to davv_ai’s ability to seamlessly transform natural language into actionable code, enhancing productivity and accessibility for all users.","web/chrome, google speech recognition","ali debbache, abdou guerguer",algeria
+elfelah,"elfelah is an ai-powered farming app that supports farmers by providing real-time disease diagnosis, crop management strategies, and actionable insights. during a challenging season, elfelah's ai advisor played a crucial role in diagnosing plant diseases that local advisors couldn't identify, helping to save valuable crops. the app also offers features like detailed land analysis (including ph and salinity), access to historical data, satellite ndvi data, and water management tools, empowering farmers to optimize their practices and increase yields.
+the gemini api integration enables elfelah to enhance its ai capabilities by providing seamless access to external data and advanced machine learning models. this integration allows for more accurate disease diagnoses and optimized crop layouts, and it generates specific tasks for farm workers, making operations more efficient. by leveraging the gemini api, elfelah transforms the farming experience, offering comprehensive support and guidance to tackle challenges and improve agricultural outcomes.",web/chrome,elfelah,algeria
+formblueprint,"formblueprint simplifies the creation and analysis of google forms with a gemini-like conversational experience for businesses, educators, and researchers.
+
+start by describing your form or questions, and formblueprint will generate the corresponding form fields and sections, complete with validation and branching logic. all while interacting with an intuitive, google forms-like interface.
+
+once responses are collected, effortlessly analyze your data through conversation to gain intelligent insights and make data-driven decisions.
+
+simply put, formblueprint's mission is transforming how users create and analyze forms using ai.
+
+--
+
+use case:
+
+for example, you could tell formblueprint, ""hey, i've started a new company, and my designer provided three logo options. can you create a survey asking my audience which logo resonates most with them?"" and then continue to analyze the results, ""hey, can you summarize the results and categorize the feedback into groups?"".
+
+--
+
+usage of gemini api:
+
+the gemini api provides form schemas using tailored system instructions to produce an intermediate representation. this representation is then converted and integrated via the google forms api.
+
+additionally, the gemini api large context capability is leveraged to analyze form responses and produce insight representations in various formats (charts, kpis, tables, observations, recommendations), which are then converted into interactive visuals for the end-user.","web/chrome, google drive, google auth","mohamed boudelaa, amina daoud",algeria
+geogemini,"geogemini is an innovative web application designed to analyze satellite imagery for environmental monitoring and climate change assessment. leveraging the advanced capabilities of the gemini api, geogemini enables users to upload satellite images or time-lapse videos, which the app processes to detect changes over time and analyze various environmental factors. users can choose from a range of analysis types, such as vegetation health, deforestation, and air pollution, and the app generates detailed insights based on the selected parameters.
+by integrating the gemini api, geogemini offers a robust platform for comparing satellite images, identifying trends, and understanding the impact of natural and human activities on the environment. the app’s core functionality includes uploading imagery, selecting analysis types, and receiving ai-generated reports that highlight key changes and features within the images. the gemini api's generative ai model flash is used to process and compare the uploaded imagery, providing high-level analysis for research, education, and sustainability efforts.","web/chrome, firebase",ahmane oussama,algeria
+interactivelearning,"يقوم التطبيق بمساعدة الطلاب او اي شخص يحتاج ايصال اسئلتهم و افكارهم بطرق سهلة يتيح لك حرية الرسم مع بعض الادوات و يقوم با اخد لقط من شاشة لتطبيق لرسمتك او صورة قمت باتحميله و يرسلها مع سؤالك الى gemin api the application helps students or anyone who needs to communicate their questions and ideas in easy ways. it gives you the freedom to draw with some tools, and it takes a screenshot of an application of your drawing or an image that you have downloaded and sends it with your question to the gemin api.",python pycharm,youcef benslimani,algeria
+khalili,"khalili is a mobile application designed to assist the blind and visually impaired. the app leverages the advanced capabilities of the gemini api, along with a suite of features that help users accomplish their daily tasks. users simply point their phone's camera at objects they wish to identify, and the app utilizes gemini’s powerful image analysis to recognize and describe them.
+
+in addition, the app features a text-to-speech function, enabling it to read aloud any text captured by the camera in a clear voice, making it easier for users to access written information in real-time.
+the app also integrates with location analysis services, allowing users to navigate to their destinations safely and efficiently.
+
+all these features are seamlessly integrated with voice commands, ensuring that the app is easy to use.","android, most impact app, most useful app.","boutheyna kirouni, ilies ould menouer",algeria
+moadalaty,"i used the gemini api in an application to open the largest possible number of specializations and years for university students, so that i, as a developer, could add specializations in an easy and smooth way that did not take me much effort. indeed, it was accepted and approved by my university, and they published and distributed it to university students, and it is available in google play platform",android,abonidal,algeria
+nogap,"nogap helps you in your self learning journey by tracking and identifying the skills you lack to achieve your goal whether it's landing a job, following an idol, or to build your own business.
+
+main features:
+
+- identifying the gaps in your skills using gemini from job descriptions, profiles or business goals
+- generating currated roadmaps based on your background using gemini
+- tracking progress, and using gemini, knowledge validation at each step through quizzes
+- adding bookmarks and generating notes from content using gemini","web/chrome, firebase",kohort,algeria
+nojoom.ai,"nojoom.ai is the first ai-powered arabic search engine, using the gemini 1.5 pro api to revolutionize arabic content interaction. it offers advanced search with deep language understanding, prioritizes reliable sources, and provides instant answers. additionally, it generates unique arabic content like summaries and articles. nojoom.ai learns from user interactions to improve results over time. powered by gemini 1.5 pro, it excels in understanding complex arabic, generating relevant text, and translating between languages, making it more than just a search engine but a personal ai guide for arabic users online.","flutter, android, web/chrome",nojoom.ai,algeria
+smartchatbot,"""smartchatbot"" redefines communication with its advanced ai-driven chat capabilities. whether the user need assistance, information, or entertainment.
+""smartchatbot"" as an advanced ai-driven chat application that utilizes the gemini api for enhancing user interactions and delivering personalized experiences, while ensuring data security and privacy.",android,techdigit-z,algeria
+agro.ia,"agro.ia is an innovative app that uses artificial intelligence to help farmers quickly and accurately identify crop diseases. simply take a photo of the affected plant, and agro.ia analyzes the image to detect potential diseases. the app then recommends the best pesticide for treatment and suggests nearby locations where the product can be purchased.
+
+agro.ia stands out for its integration with the gemini api, which provides powerful computer vision and machine learning capabilities. we use the gemini api to process and analyze the images submitted by users, applying trained models to identify patterns corresponding to various plant diseases. this allows agro.ia to deliver fast and accurate diagnoses, improving farmers' efficiency and reducing crop losses. additionally, the api enables continuous updates to the disease database, ensuring the app remains current with the latest agronomic information.
+
+with agro.ia, farmers can make informed decisions in real-time, preserving the health of their crops and boosting productivity.",flutter,agro.ia,angola
+tchissola,tchissola is a quiz game app that leverages the power of artificial intelligence to let you design and play your very own customized quiz challenges. you just need the title and tchissola will do the rest. share your quiz with friends and family.,"flutter, firebase",gabriel vieira,angola
+the riddle of wisdom,"the riddke of wisdom is an engaging word game designed to challenge and entertain players by having them complete partially masked words. the game display a word with only the first and last letters visible, and players must fill in the missing letters to solve the riddle. to enhance the game's vocaublary and ensure a rich, diverse experience, the app leveraged the power of gemini api. by using gemini api, the app generated a curated array of words across various categories, enriching our game with a vast and creative selection of terms. the api's ability to produce relevant and high-vocabulary allowed me to create a dynamic and engagin game environment.
+this is integration not only saved time but also ensured that the word list is continually updated an varied, providing players with an enjoyable and challenging experience every time they play.","web/chrome, agular",nerdbug,angola
+abuelo gpt,"contiene un simple botón para hablar. lo que hace es convertir la voz en texto y mandárselo a la api de gemini, luego de que la api de gemini responda, convierte ese texto en voz.",android,josé travacio,argentina
+chess commander,"our app is an interactive game that uses ai-powered characters to teach communication skills through gameplay. players engage with ai characters, each with unique personalities and challenges, and learn to persuade and influence them to take specific actions. as players progress through the game, they develop key communication skills such as adjusting their tone of voice, adding variety to their speech, building rapport, and practicing active listening.
+we used gemini api to analyze attributes in player's voice and we plan to add support for facial expressions and body language. we use gemini's structured output to generate the character response and in-game decisions.","flutter, web/chrome",hypecat ai,argentina
+game master ai,"gmai is your personal ai game master, powered by google's gemini pro model! this app lets you experience thrilling rpg adventures where you are the hero. craft unique characters, explore fantastical worlds, and make critical decisions that shape the narrative.
+
+gemini fuels gmai's ability to:
+- understand your intent: interpret your actions and choices to craft a dynamic storyline.
+- generate creative content: describe vibrant scenes, unique characters, and captivating plot twists.
+- engage in natural dialogue: enjoy a seamless and immersive roleplaying experience.
+
+gmai breathes life into your imagination!","web/chrome, firebase",alfonsom0 | web developer,argentina
+gemi slice | gemini snippet on search ✨,"my application has a simple objective: it’s an extension that activates upon detecting the url www.google.com/search and generates code snippets in the desired language based on what the user searches for related to programming. it allows users to listen to the explanation of the code snippet, regenerate the response, and copy the snippet. soon, it will include additional functions like voting or reusing previously generated code snippets, and i plan for the model to self-feed with user-created responses.
+
+the usage is straightforward and based on four calls to gemini:
+
+* code snippet: generates snippets based on what the user searches for, using a dataset from google research and code snippets.
+* explanation: provides a 200-character explanation based on the code snippet and google research.
+* language: detects the programming language used in the code snippet to improve the user interface.
+* programming-related topic: returns a 204 endpoint or 200 ok with ""yes"" to determine if the code snippet should be generated.","web/chrome, google chrome extension",snapverse,argentina
+gemini ai book capture,"gemini ai book capture revolutionizes library management for everyone from avid readers to professional librarians. simply snap a photo of a book cover and our app, powered by gemini's cutting-edge ai, instantly extracts key information like title, author, publisher, and isbn.
+users can then edit and complete the data, adding personal notes or tags. the app stores this information in a searchable digital catalog, accessible anytime, anywhere. need to share or use the data elsewhere? export your entire library as a csv file with a single tap.",android,miiweb,argentina
+iada,this study proposes a system that uses gemini to facilitate access to legislative information,web/chrome,bartolomeo gonzalez,argentina
+kind konnect,"kind konnect is an app designed to connect people with local help opportunities, fostering community engagement and solidarity. users can create and join assistance events, access group chats for coordination, and view user profiles to find the right fit for their needs or interests. our app uses an integrated ai feature, powered by the gemini api, to recommend relevant help opportunities based on user preferences and location data. the gemini api enhances user experience by providing real-time suggestions and insights, making it easier for users to find and participate in meaningful community activities.","flutter, firebase",pablo salamendi,argentina
+lorean,"to collaborate in the development of children with diagnosed disorders, using a tool with artificial intelligence that allows accompanying each one individually, adapting content and exams automatically.","flutter, firebase",lorean team,argentina
+luminaria,"luminaria is a cutting-edge reading comprehension app that leverages generative ai to empower learners to craft their own creative stories while building essential reading skills.
+by leveraging the gemini api, the app dynamically generates immersive stories based on the user's input and tailors reading comprehension activities to each player’s unique learning profile this ensures that every kid receives personalized feedback and support throughout their learning journey.
+
+backed by a team with over 20 years of experience in reading comprehension research (harvard, uba, tufts), luminaria is rooted in science. previous versions of the tool have demonstrated measurable impact, showcasing its effectiveness in enhancing reading skills.
+a randomized controlled trial (rct) demonstrated that luminaria improves reading proficiency by over 20% compared to no intervention.
+
+designed with neurodiversity in mind, luminaria offers oral support, scaffolding, and adaptive exercises to assist children with dyslexia, autism, and adhd. the app's gamified nature makes learning attractive and immersive, providing an engaging environment where all children can thrive.","flutter, firebase",wumbox,argentina
+prepai,"prepai aims to help users to practice, get more confident and be ready for their next job interview. by using gemini api, prepai creates the interviews and exams content (questions, options, hints, etc...). and also with the ai it provides a feedback and ways to improve after receiving user answers.",web/chrome,juan ignacio llaberia,argentina
+severus,"descripción del proyecto
+severus es un asistente que permite, con una orden, ejecutar comandos y automatizar la pc. el proyecto está realizado para escritorio con tauri.
+el proyecto cuenta con dos modos: el modo de preguntas y el de asistente. para cambiar entre uno y otro, hay que hacerlo con el comando de voz. por ejemplo, le damos click al núcleo, decimos ""asistente"" o ""preguntas"", y observamos el cambio de color entre uno y otro modo.
+actualmente, para usar los comandos por voz, hay que otorgarle permiso para usar el micrófono. una vez concedido el permiso, haciendo clic en el núcleo del asistente se activa el micrófono y empieza a escuchar la orden. cuando se termina la petición, hay que darle clic nuevamente para que se ejecute. cuando se usa el comando de voz la forma que se puso por el momento de interacion son ventanas del sistema
+las respuestas del asistente se realizan ejecutando acciones en el sistema operativo huésped, como crear carpetas, abrir programas, crear proyectos para desarrollo, abrir el explorador, o cualquier otra petición que se pueda hacer por línea de comandos. se pensó en realizar acciones más complejas, pero no se alcanzó el tiempo de desarrollo.
+se podria integrar la cli de firebase y hacer un asistente que permita fasilidad en la configuracion de los diferentes productos de firebase o usando la cli de google cloud.
+o cualquier producto que cuente con cli.","web/chrome, no pude usar la api convierte voz en texto con la ia de google",sector-7g-animas,argentina
+a10fy,"this a[ccessibili]fy a.k.a. a10fy extension makes gemini models more accessible to the users of chromium browsers by providing:
+- chat with gemini flash and pro models with support of on-the-fly changing system instructions and gemini models,
+- unified access to the models and free/paid services within one extension,
+- “code players” allowing to run code blocks within the chat messages, enriching the chat experience,
+- custom actions allowing to process parts of the active page using llm with custom system prompts,
+- accessing llm-based ai assistant using voice and text commands for simple actions on the current page,
+- saving pages for later accessing them using embeddings-based fuzzy search.
+
+the chat (with wider range of available python libraries to use in the chat python code players and less restrictive custom players) is also available on the web at https://a10fy.net, while ai assistant and page snapshot taking/fuzzy search is only available in the chromium extension: https://chromewebstore.google.com/detail/mphepoohgbafpfijnlkkcbejlkmafmba",web/chrome,alex dainiak,armenia
+ai arena,"ai arena is an innovative online game where players create unique characters and engage in tactical battles, all powered by ai-driven assistants. the application leverages the capabilities of the google gemini api to enhance every aspect of gameplay.
+
+players start by describing their characters in detail, including their appearance and abilities. using the gemini api, the application generates vivid, lifelike images of these characters, making each one unique. next, the ai analyzes the characteristics of all characters involved and creates a detailed description of the battle arena. this description is then transformed into a visual representation of the arena, setting the stage for the combat.
+
+during the battle, players receive support from two ai assistants: a tactician and a fighter. the tactician uses the gemini api to analyze the battlefield and opponents, offering strategic advice for the next move. the fighter then uses this advice, along with the player’s input, to generate a move, which is executed in the game. after each round, the ai referee, also powered by gemini, evaluates the combat actions and assigns scores based on performance.
+
+finally, a commentator assistant provides a detailed analysis and commentary on the battle in the game's chat, helping players and spectators understand the strategic choices made. through the integration of the gemini api, ai arena delivers a dynamic and immersive experience, making each game session unique and engaging.",web/chrome,ai arena,armenia
+gemifood,"don't know where to eat? gemifood recommends interesting restaurants nearby using the power of google's gemini ai. want something specific? select a type or cuisine, and gemifood adapts its suggestions.
+
+when signing up, users select restaurants they like. then, the gemini api is used to analyze the description and reviews of those restaurants and create a description of a user's taste. the gemini api is also used to make a suggestion based on this description, along with information about nearby restaurants - all at the press of a button. this suggestion is then presented in a beautiful ui.","android, material 3, google maps api and google cloud",narek,armenia
+backyard safari,"backyard safari is an android app designed with gemini ai to help users appreciate local wildlife, encouraging outdoor activity. the app uses scientific data to give users a list of common animals in their area, then uses gemini to provide all the information they need to find and photograph their favorite.
+
+the app works by first using the global biodiversity information facility and location services to provide a list of common local animals. users select an animal and access:
+
+general info: detailed descriptions and images from wikipedia and the global biodiversity information facility.
+
+gemini ai chatbot: a chatbot assists users in finding their chosen animal, providing habitat details and answering any other questions.
+
+local sightings heatmap: powered by google maps, this feature shows hotspots based on animal sighting data, helping users pinpoint the best locations.
+
+camera with image recognition: users can photograph animals, and gemini ai verifies if the image matches the selected species.
+
+google technologies:
+
+gemini ai, with gemini 1.5 pro. this provides users with a personal guide to find their chosen animal, and to verify that images taken match their chosen species.
+
+firebase provides the serverless backend, including; firebase auth and oauth, firestore for user progress, firebase storage for image storage, gemini ai via firebase for ai services.
+
+the app was developed using flutter and uses the google maps package and api.
+
+thank you, please enjoy!","flutter, android, firebase, google maps",simon hanly-jones,australia
+checkr bot,"if you have dietary requirements, you know how hard it can be to navigate the food aisles in supermarkets, not knowing whether the vege chips are hiding chicken flavour, or if there’s a sneaky animal derived emulsifier in that soy milk. that’s where checkr bot, the ingredient investigator, can help! it’s your essential companion for navigating extensive ingredient lists - whether you’re at your local supermarket, or in the ramen aise of a 7-11 in tokyo. our advanced ai tool meticulously analyzes food, cleaning and cosmetic ingredients lists, regardless of the language, and breaks it down to give you the information that is most relevant to you.
+
+with checkr bot, you receive organized ingredient lists along with detailed descriptions, potential diet or allergen violations. whether you're avoiding specific allergens or adhering to a particular diet, checkr bot ensures you make informed choices by decoding complex ingredient labels and highlighting any potential concerns. live life with peace of mind, knowing that checkr bot helps you stay on top of your dietary needs and allergen sensitivities, no matter where your journey takes you.","web/chrome, firebase, vertexai - gemini",checkr bot,australia
+clarify,"clarify is an app designed to cut through the clutter of online content, helping users get straight to the information they need. whether it's an article or a youtube video, clarify ensures that what you're about to explore lives up to its promise.
+
+when a user shares an article link with clarify, the app leverages the power of the gemini api to perform a quick and comprehensive analysis. this includes a clarity score, which measures the accuracy and relevance of the headline, and a succinct summary that highlights the key points of the content. this way, users can immediately determine if the article is worth their time.
+
+but clarify doesn't stop at articles. it also takes advantage of gemini's multi-modal input capabilities to analyze youtube videos. by examining both the video thumbnail and the transcript, clarify provides users with a clear understanding of what the video truly offers, cutting through clickbait thumbnails and misleading titles. whether you're reading or watching, clarify is your go-to tool for a distraction-free, informative online experience.","flutter, android, firebase",clarify,australia
+class planner,"class planner is an intuitive ai-powered tool designed to simplify teaching for educators of all tech levels. with a fully responsive interface, it’s accessible to everyone, including those with vision impairments, adapting seamlessly to browser zoom settings. hosted on siteground, a google-powered platform committed to being carbon neutral, class planner also includes an option to incorporate sustainability aspects into the content, making it a tool that supports teachers and contributes to a better future. 🌱
+
+remarkably, class planner simplifies the complexities of large language models (llms) by ensuring consistent, accurate outputs with minimal prompting. teachers can effortlessly generate high-quality, curriculum-aligned content without needing advanced ai knowledge. built-in prompt suggestions guide users towards creating even more effective materials, all within a user-friendly interface.
+
+unlike other tools, class planner combines ai customization with simplicity, offering a unique experience tailored to educators’ specific needs. it’s not just about saving time; it’s about empowering teachers to create impactful, personalized content for their students. with multi-language support and real-time content suggestions, class planner is designed to be a versatile, indispensable tool in the modern classroom. we believe the user feedback is crucial to making it even better, and we are committed to this.",web/chrome,justin mcardle,australia
+clickolas cage,given a natural text prompt goal. clickolas will use the gemini api to decide which actions to take on the web to achieve the text prompt goal.,web/chrome,techfren,australia
+companion 1,"""companion"" is a chrome extension designed to make the web more accessible and user-friendly, particularly for individuals with visual impairments, cognitive disabilities, or language barriers. the app leverages the gemini api to simplify complex web content, making it more digestible and easier to understand.
+
+the core idea of companion is to grant gemini direct access to your current tab's web content, enabling it to provide relevant answers to the exact content you are currently viewing. currently, the app supports a basic multi-modality with gemini, allowing you to prompt gemini with an image and text and receive a text-based response. future plans include expanding this capability to process multiple images, videos, and audio, as well as generating images to help illustrate web content.
+
+a feature that exemplifies the direction of the app is its ability to understand and respond to voice commands in hover mode. in this mode, gemini interprets voice commands in relation to user-selected content, providing context-aware responses that align with the ongoing conversation.
+
+users can also adjust gemini's responses according to their preferences. for example, you can ask gemini to simplify information, offer follow-up questions to deepen understanding, or translate content into chosen languages. this extension aims not only to make the web more navigable but also to enhance daily experiences by removing barriers to digital content.",web/chrome,kori jacobsen,australia
+doggle,"this project developed an ai-powered web app for managing personal finances, featuring intuitive visual displays and an ai chatbot designed as a playful bookkeeping puppy. the chatbot supports voice, text, image, and file inputs, using finetuned gemini apis for bill processing and personalized financial advice. this app enhances traditional budgeting tools, making them faster, smarter, and more personalized with advanced ai.","firebase, google cloud sql",codeblossoms,australia
+easy apply,our app allows job seekers to create beautifully designed resumes and cover letters and edit the content using gemini. think of it as having gemini on the left and google docs on the right of the screen. you can ask gemini to update the content of your resume without having to worry about layout and formatting,"web/chrome, google cloud",easy apply,australia
+eduquiz,"this app generate quiz and correct and incorrect answers use gemini api, the gemini tailor the response are based on the user input parameters","web/chrome, firebase, angular, typescript",booolean,australia
+fetebird,"fetebird revolutionizes assignment grading by harnessing the power of the gemini api(gemini-1.5-flash-001) and a retrieval augmented generation (rag) architecture. it streamlines the evaluation process, providing educators with valuable insights into student understanding while maintaining flexibility and adaptability.
+core functionality
+reference answer database - at its heart, fetebird maintains a database of verified reference answers, each vectorized for efficient comparison. initially, this database may contain only the teacher's solution, but it expands dynamically as more student submissions are reviewed and approved.
+gemini api integration - the app leverages the gemini api (gemini-1.5-flash-001) and the langchain4j java library to interact with a large language model. this enables fetebird to perform complex evaluations and provide detailed feedback.
+rag architecture - when a professor initiates an ai evaluation, fetebird employs a rag architecture. it retrieves relevant reference answers from the database and presents them to the gemini model alongside the student's submission.
+prompt engineering: carefully crafted system and user prompts guide the model's evaluation. it considers the reference answers and the student's work to provide comprehensive feedback, highlighting strengths, weaknesses, and areas for improvement.",web/chrome,fetebird,australia
+fortograph,"the app uses gemini api to get the coordinates of the piis in an image and then redact them in a way where they can be unredacted. using normal image viewer, the image will then appear with the piis redacted.
+
+it also uses the gemini api to get the piis in an image and sends the coordinates to a web service to allows for redaction and unredaction of the data in the image.
+
+it also uses the gemini api to test and see if the image contains data that has been redacted.
+
+the sample image i used is taken from https://en.wikipedia.org/wiki/australian_passport
+--------------------------------------------------------------------------
+note : youtube has removed my video because it contains pii, i am appealing that decision. i have uploaded the video to google drive https://drive.google.com/file/d/1ifo-oqm8fwfeptv7wfbnrpxjsxmknt3h/view?usp=sharing
+(this is another use case for using my app eh? ;) to bypass the pii identification in youtube.",web/chrome,fortograph,australia
+gemini voice companion,"this is a voice assistant powered by gemini ai, featuring local text-to-speech and speech-to-text capabilities that bridge voice and text interactions. gemini's api excels at understanding context and dispatching commands for various scenarios. by building up context and utilizing api integrations, gemini can execute python scripts to perform diverse functions.
+in this application, users can interact with the assistant entirely through voice, enabling hands-free and eyes-free operation. this makes it particularly useful in situations where voice is the only available means of communication. the assistant's capabilities include:
+
+multiple speaker recognition
+unknown voice noise filtering
+controlling smart home devices
+mimicking the user's voice
+switching between different voices and personalities
+reading and summarizing news articles
+get weather and other information
+playing spotify music
+capturing photos and analyzing them
+navigate link through chrome
+schedule voice reminder or a generic action
+
+the gemini-powered assistant's versatility and voice-centric design make it a powerful tool for a wide range of hands-free and eyes-free applications, including in car entertainment, walking guide, house managing, etc.",web/chrome,zhenya yang,australia
+holopaws,"holopaws - your fun and creative ai-powered virtual pet!
+
+holopaws is designed to be a delightful companion, bringing joy and creativity into your daily life. though still a work in progress, our vision is to make holopaws more than just a virtual pet app. it’s crafted to be a friend that understands and interacts with you in the most engaging ways.
+
+whether you’re looking for a cheerful buddy to brighten your day or a playful friend to share your moments, holopaws is here for you! with its friendly and intuitive nature, our long-term plan is to infuse holopaws with unique traits and personalities, allowing each one to adapt to its owner's moods and preferences, making every interaction feel special.
+
+powered by gemini ai, your holopaw responds naturally to your commands, favorite music, and daily routines, offering a unique and interactive experience (note that some features are limited in this version). our goal is to continuously develop holopaws so that your companion get to know you over time, providing personalised fun that makes every day a little brighter.",android,holopaws,australia
+ortege blocksmith,"ortege blocksmith is a telegram bot and mini-app powered by google gemini. it provides developers with bespoke llms tailored to specific blockchains like stacks and hyperlane. these llms, powered by gemini, allow developers to ask complex questions about code, smart contracts, and blockchain concepts, receiving accurate and insightful answers directly within telegram. blocksmith leverages gemini's advanced language understanding and knowledge capabilities to deliver a seamless and intuitive learning experience for blockchain developers.",gcp,ortege,australia
+pack pet health,"pack pet health is an innovative, ai-powered mobile app designed to be your on-demand pet care companion, bringing veterinary expertise right to your fingertips. powered by google gemini, our app offers real-time virtual consultations through vet chat, where you can describe your pet’s symptoms, share photos, and receive expert advice on whether to manage the issue at home or seek immediate veterinary care. for minor concerns, our ai recommends tailored over-the-counter products that can be conveniently purchased via integrated amazon links.
+
+one of our standout features is the ""show me"" functionality, which allows you to instantly identify safe and unsafe foods for your dog simply by uploading a photo. whether you’re at home or visiting friends, you can ensure your pet’s safety with just a tap. additionally, our onboarding process personalises your dog’s health plan, taking into account their breed, weight, and specific health needs, ensuring they get the most appropriate care recommendations.
+
+pack pet health is here to ease the burden on overworked veterinary services, providing pet owners with the tools they need to keep their furry friends healthy, happy, and safe, all while contributing to a more sustainable, stress-free approach to pet care.",flutter,pack pet health,australia
+recime,"recime is your personal ai chef, turning your fridge into a culinary playground. simply scan your pantry using your camera, upload photos, or type in your ingredients - recime's magic starts with gemini identifying what's available using the gemini api multimodal capabilities.
+
+with your ingredients identified, recime uses gemini to generate custom recipes tailored to your dietary needs and preferred cooking styles, complete with captivating recipe images. it doesn't stop at the recipe - recime uses gemini to create step-by-step instructions to make cooking easy.
+
+follow each recipe with ease! recime features a handy checklist to keep you on track during cooking. need to add ingredients to your shopping list? recime has you covered. want to change up the recipe? simply tell recime what you want to adjust, and gemini will adapt the recipe for you.
+
+from scanning your fridge to crafting a perfect meal, recime leverages gemini's powerful multimodal abilities to revolutionize your cooking experience.",web/chrome,recime.ai,australia

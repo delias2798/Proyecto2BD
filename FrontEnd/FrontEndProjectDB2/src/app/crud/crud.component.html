@@ -1,0 +1,39 @@
+<div id="graphContainer" style="width: 100%; height: 600px;"></div>
+<div id="nodeProperties" style="margin-top: 20px; padding: 10px; border: 1px solid #d3d3d3; border-radius: 8px;">
+    <h3>Node Properties</h3>
+    <pre id="propertiesContent">Select a node to see its properties.</pre>
+</div>
+
+<div class="node-controls">
+    <label for="nodeType">Tipo de nodo:</label>
+    <select id="nodeType" [(ngModel)]="selectedType" (change)="loadNodes()">
+        <option value="Proyecto">Proyecto</option>
+        <option value="Ubicacion">Ubicacion</option>
+        <option value="Tecnologia">Tecnologia</option>
+        <option value="EquipoTrabajo">EquipoTrabajo</option>
+    </select>
+
+    <input type="text" [(ngModel)]="searchTerm" placeholder="Buscar..." (input)="filterNodes()" />
+</div>
+
+<ul>
+    <li *ngFor="let node of filteredNodes" (click)="selectNode(node)">
+        <!-- Mostrar la propiedad específica en función del tipo de nodo seleccionado -->
+        <span *ngIf="selectedType === 'Tecnologia'">nombreAplicacion: {{ node.nombreAplicacion || 'Sin nombre' }}</span>
+        <span *ngIf="selectedType === 'Ubicacion'">location: {{ node.location || 'Sin ubicación' }}</span>
+        <span *ngIf="selectedType === 'Proyecto'">titulo: {{ node.titulo || 'Sin título' }}</span>
+        <span *ngIf="selectedType === 'EquipoTrabajo'">miembros: {{ node.numeroMiembros || 'Sin miembros' }}</span>
+    </li>
+</ul>
+
+<div *ngIf="selectedNode || creatingNode">
+    <form (submit)="onSubmit()">
+        <div *ngFor="let key of getPropertiesKeys()">
+            <label>{{ key }}:</label>
+            <input [ngModel]="getModelProperty(key)" (ngModelChange)="setModelProperty(key, $event)"
+                [disabled]="key === 'id'" name="property-{{ key }}" />
+        </div>
+        <button type="submit">Guardar</button>
+        <button type="button" (click)="deleteNode()">Eliminar</button>
+    </form>
+</div>
