@@ -3,6 +3,7 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { Neo4jService } from '../neo4j.service';
 import cytoscape from 'cytoscape';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-crud',
@@ -23,7 +24,8 @@ export class CrudComponent implements AfterViewInit {
 
   constructor(
     private neo4jService: Neo4jService,
-    @Inject(PLATFORM_ID) private platformId: Object
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private router: Router
   ) {}
 
   ngAfterViewInit() {
@@ -127,11 +129,11 @@ export class CrudComponent implements AfterViewInit {
     }
   }
 
-  deleteNode() {
-    if (this.selectedNode && !this.selectedNode.hasRelationships) {
-      this.neo4jService.deleteNode(this.selectedType, this.selectedNode.id).subscribe(() => this.loadNodes());
-    }
-  }
+  // deleteNode() {
+  //   if (this.selectedNode && !this.selectedNode.hasRelationships) {
+  //     this.neo4jService.deleteNode(this.selectedType, this.selectedNode.id).subscribe(() => this.loadNodes());
+  //   }
+  // }
 
   getPropertiesKeys() {
     return Object.keys(this.selectedNode || this.newProperties);
@@ -148,4 +150,21 @@ export class CrudComponent implements AfterViewInit {
       this.selectedNode.properties[key] = value;
     }
   }
+
+  createNode() {
+    this.router.navigate(['/createNode']);
+  }
+
+  readNode() {
+    this.router.navigate(['/readNode']);
+  }
+
+  updateNode() {
+    this.router.navigate(['/updateNode']);
+  }
+
+  deleteNode() {
+    this.router.navigate(['/deleteNode']);
+  }
+
 }

@@ -3,6 +3,13 @@
     <h3>Node Properties</h3>
     <pre id="propertiesContent">Select a node to see its properties.</pre>
 </div>
+<div id="CRUD Actions" style="margin-top: 20px; padding: 10px; border: 1px solid #d3d3d3; border-radius: 8px; display: flex; flex-direction: column; gap: 10px;">
+    <h3>Actions</h3>
+    <button *ngIf="true" (click)="createNode()">Crear nodo</button>
+    <button *ngIf="true" (click)="readNode()">Leer nodo</button>
+    <button *ngIf="true" (click)="updateNode()">Actualizar nodo</button>
+    <button *ngIf="true" (click)="deleteNode()">Eliminar nodo</button>
+</div>
 
 <div class="node-controls">
     <label for="nodeType">Tipo de nodo:</label>
@@ -21,7 +28,7 @@
         <!-- Mostrar la propiedad específica en función del tipo de nodo seleccionado -->
         <span *ngIf="selectedType === 'Tecnologia'">nombreAplicacion: {{ node.nombreAplicacion || 'Sin nombre' }}</span>
         <span *ngIf="selectedType === 'Ubicacion'">location: {{ node.location || 'Sin ubicación' }}</span>
-        <span *ngIf="selectedType === 'Proyecto'">titulo: {{ node.titulo || 'Sin título' }}</span>
+        <span *ngIf="selectedType === 'Proyecto'">whatItDoes: {{ node.whatItDoes || 'Sin Propiedad' }}</span>
         <span *ngIf="selectedType === 'EquipoTrabajo'">miembros: {{ node.numeroMiembros || 'Sin miembros' }}</span>
     </li>
 </ul>
@@ -34,6 +41,6 @@
                 [disabled]="key === 'id'" name="property-{{ key }}" />
         </div>
         <button type="submit">Guardar</button>
-        <button type="button" (click)="deleteNode()">Eliminar</button>
+        <!-- <button type="button" (click)="deleteNode()">Eliminar</button> -->
     </form>
 </div>

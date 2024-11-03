@@ -64,14 +64,50 @@ app.post('/api/loadCsv', async (req, res) => {
       location: row.Location 
     }) 
     MERGE (ubicacion:Ubicacion {location: row.Location}) 
-    MERGE (tecnologia:Tecnologia {nombreAplicacion: row.\`Built With\`}) 
-    MERGE (desarrollador:Desarrollador {nombre: row.By}) 
-    MERGE (equipo:EquipoTrabajo {numeroMiembros: 1}) 
-    MERGE (equipo)-[:CONFORMADO_POR]->(desarrollador) 
-    MERGE (proyecto)-[:CREADO_POR]->(equipo) 
-    MERGE (proyecto)-[:UBICADO_EN]->(ubicacion) 
-    MERGE (proyecto)-[:USO_TECNOLOGIA]->(tecnologia)
+    WITH row, proyecto, ubicacion 
+    UNWIND SPLIT(row.\`Built With\`, ",") AS tecnologiaNombre 
+    MERGE (tecnologia:Tecnologia {nombreAplicacion: TRIM(tecnologiaNombre)}) 
+    MERGE (proyecto)-[:USO_TECNOLOGIA]->(tecnologia) 
+
+    WITH row, proyecto, ubicacion // Reutilizar el proyecto y ubicación
+    UNWIND SPLIT(row.By, ",") AS desarrolladorNombre 
+    MERGE (desarrollador:Desarrollador {nombreD: TRIM(desarrolladorNombre)}) 
+    MERGE (equipo:EquipoTrabajo {nombre: row.By}) 
+    MERGE (equipo)-[:CONFORMADO_POR]->(desarrollador)
+    MERGE (desarrollador)-[:FORMA_PARTE]->(equipo)
+    MERGE (proyecto)-[:CREADO_POR]->(equipo)
+    MERGE (equipo)-[:CREA]->(proyecto) 
+    MERGE (proyecto)-[:UBICADO_EN]->(ubicacion)
   `;
+
+  // LOAD CSV WITH HEADERS FROM 'file:///archivo_filtrado_normalizado_final.csv' AS row 
+  // MERGE (proyecto:Proyecto { 
+  //     titulo: row.Title, 
+  //     whatItDoes: row["What it Does"], 
+  //     builtWith: row["Built With"], 
+  //     by: row.By, 
+  //     location: row.Location 
+  // }) 
+  // MERGE (ubicacion:Ubicacion {location: row.Location}) 
+
+  // // Pasar el proyecto y ubicación a la siguiente cláusula WITH
+  // WITH row, proyecto, ubicacion 
+
+  // // Descomponer la lista de tecnologías
+  // UNWIND SPLIT(row["Built With"], ",") AS tecnologiaNombre 
+  // MERGE (tecnologia:Tecnologia {nombreAplicacion: TRIM(tecnologiaNombre)}) 
+  // MERGE (proyecto)-[:USO_TECNOLOGIA]->(tecnologia) 
+
+  // // Descomponer la lista de desarrolladores
+  // WITH row, proyecto, ubicacion // Reutilizar el proyecto y ubicación
+  // UNWIND SPLIT(row.By, ",") AS desarrolladorNombre 
+  // MERGE (desarrollador:Desarrollador {nombreD: TRIM(desarrolladorNombre)}) 
+  // MERGE (equipo:EquipoTrabajo {nombre: row.By}) 
+  // MERGE (equipo)-[:CONFORMADO_POR]->(desarrollador)
+  // MERGE (desarrollador)-[:FORMA_PARTE]->(equipo)
+  // MERGE (proyecto)-[:CREADO_POR]->(equipo)
+  // MERGE (equipo)-[:CREA]->(proyecto) 
+  // MERGE (proyecto)-[:UBICADO_EN]->(ubicacion)
 
   try {
     await session.run(loadCsvQuery);
