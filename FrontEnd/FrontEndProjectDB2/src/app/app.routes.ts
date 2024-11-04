@@ -6,6 +6,7 @@ import { CreateNodeComponent } from './create-node/create-node.component';
 import { ReadNodeComponent } from './read-node/read-node.component';
 import { UpdateNodeComponent } from './update-node/update-node.component';
 import { DeleteNodeComponent } from './delete-node/delete-node.component';
+import { ConsultasComponent } from './consultas/consultas.component';
 
 export const routes: Routes = [
   { path: '', component: LoadCsvComponent }, // Página de carga de CSV
@@ -13,7 +14,8 @@ export const routes: Routes = [
   { path: 'createNode', component: CreateNodeComponent }, // Página CRUD
   { path: 'readNode', component: ReadNodeComponent }, // Página CRUD
   { path: 'updateNode', component: UpdateNodeComponent }, // Página CRUD
-  { path: 'deleteNode', component: DeleteNodeComponent }, // Página CRUD
+  { path: 'deleteNode', component: DeleteNodeComponent }, // Página CRUDconsultas
+  { path: 'consultas', component: ConsultasComponent }, // Página CRUD
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 

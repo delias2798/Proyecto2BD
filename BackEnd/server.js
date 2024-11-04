@@ -302,6 +302,153 @@ app.delete('/api/node/:type/:id', async (req, res) => {
   }
 });
 
+// -------------------------------------------------- CONSULTAS -------------------------------------------------- 
+
+// CONSULTA 1
+app.get('/api/consultas/cantidadAplicacionesPorTecnologia', async (req, res) => {
+  const { tecnologia } = req.query;
+  const session = driver.session();
+  const query = `
+    MATCH (:Proyecto)-[:USO_TECNOLOGIA]->(t:Tecnologia {nombreAplicacion: $tecnologia})
+    RETURN COUNT(*) AS cantidadAplicaciones;
+  `;
+
+  try {
+    const result = await session.run(query, { tecnologia });
+    const cantidadAplicaciones = result.records[0].get('cantidadAplicaciones').toNumber();
+    res.json({ cantidadAplicaciones });
+  } catch (error) {
+    console.error("Error executing query:", error);
+    res.status(500).json({ message: 'Error executing query', error });
+  } finally {
+    await session.close();
+  }
+});
+
+// CONSULTA 2
+app.get('/api/consultas/aplicacionesSimilares', async (req, res) => {
+  const { titulo } = req.query;
+  const session = driver.session();
+
+  const query = `
+    MATCH (p1:Proyecto {titulo: $titulo})-[:USO_TECNOLOGIA]->(t:Tecnologia)<-[:USO_TECNOLOGIA]-(p2:Proyecto)
+    WHERE p1 <> p2
+    RETURN p2.titulo AS AplicacionSimilar, COUNT(t) AS coincidencias
+    ORDER BY coincidencias DESC;
+  `;
+
+  try {
+    const result = await session.run(query, { titulo });
+    const aplicacionesSimilares = result.records.map(record => ({
+      titulo: record.get('AplicacionSimilar'),
+      coincidencias: record.get('coincidencias').toNumber()
+    }));
+    res.json(aplicacionesSimilares);
+  } catch (error) {
+    console.error("Error executing query:", error);
+    res.status(500).json({ message: 'Error executing query', error });
+  } finally {
+    await session.close();
+  }
+});
+
+// CONSULTA 3
+app.get('/api/consultas/aplicacionesPorCreador', async (req, res) => {
+  const { nombreD } = req.query;
+  const session = driver.session();
+
+  const query = `
+    MATCH (d:Desarrollador {nombreD: $nombreD})-[:FORMA_PARTE]->(:EquipoTrabajo)-[:CREA]->(p:Proyecto)
+    RETURN p.titulo AS Aplicaciones;
+  `;
+
+  try {
+    const result = await session.run(query, { nombreD });
+    const aplicaciones = result.records.map(record => record.get('Aplicaciones'));
+    res.json(aplicaciones);
+  } catch (error) {
+    console.error("Error executing query:", error);
+    res.status(500).json({ message: 'Error executing query', error });
+  } finally {
+    await session.close();
+  }
+});
+
+// CONSULTA 4
+app.get('/api/consultas/topTecnologias', async (req, res) => {
+  const session = driver.session();
+
+  const query = `
+    MATCH (p:Proyecto)-[:USO_TECNOLOGIA]->(t:Tecnologia)
+    WITH t, COUNT(p) AS cantidadAplicaciones
+    WHERE cantidadAplicaciones > 10
+    RETURN t.nombreAplicacion AS Tecnologia, cantidadAplicaciones
+    ORDER BY cantidadAplicaciones DESC
+    LIMIT 5;
+  `;
+
+  try {
+    const result = await session.run(query);
+    const topTecnologias = result.records.map(record => ({
+      tecnologia: record.get('Tecnologia'),
+      cantidadAplicaciones: record.get('cantidadAplicaciones').toNumber()
+    }));
+    res.json(topTecnologias);
+  } catch (error) {
+    console.error("Error executing query:", error);
+    res.status(500).json({ message: 'Error executing query', error });
+  } finally {
+    await session.close();
+  }
+});
+
+// CONSULTA 5
+app.get('/api/consultas/creadoresNuncaJuntos', async (req, res) => {
+  const { tecnologiasSeleccionadas } = req.query;
+  const tecnologias = tecnologiasSeleccionadas.split(',').map(t => t.trim());
+
+  // Verificar que haya al menos dos tecnologías seleccionadas
+  if (tecnologias.length < 2) {
+    return res.status(400).json({ message: 'Debe seleccionar al menos dos tecnologías.' });
+  }
+
+  const session = driver.session();
+  const query = `
+    WITH ["web/chrome", "firebase"] AS tecnologiasSeleccionadas
+    MATCH (d:Desarrollador)-[:FORMA_PARTE]->(:EquipoTrabajo)-[:CREA]->(:Proyecto)-[:USO_TECNOLOGIA]->(t:Tecnologia)
+    WHERE t.nombreAplicacion IN tecnologiasSeleccionadas
+    WITH d, tecnologiasSeleccionadas, COLLECT(DISTINCT t.nombreAplicacion) AS tecnologiasDominadas
+    WHERE ALL(tec IN tecnologiasSeleccionadas WHERE tec IN tecnologiasDominadas)
+
+    WITH COLLECT(d) AS desarrolladores
+    UNWIND desarrolladores AS d1
+    UNWIND desarrolladores AS d2
+    WITH d1, d2
+    WHERE d1 <> d2 AND NOT (d1)-[:FORMA_PARTE]->(:EquipoTrabajo)<-[:FORMA_PARTE]-(d2)
+
+    RETURN d1.nombreD AS Desarrollador1, d2.nombreD AS Desarrollador2
+    ORDER BY Desarrollador1, Desarrollador2;
+
+  `;
+
+  try {
+    const result = await session.run(query, { tecnologias });
+    const trabajadores = result.records.map(record => ({
+      desarrollador1: record.get('Desarrollador1'),
+      desarrollador2: record.get('Desarrollador2')
+    }));
+    res.json(trabajadores);
+  } catch (error) {
+    console.error("Error executing query:", error);
+    res.status(500).json({ message: 'Error executing query', error });
+  } finally {
+    await session.close();
+  }
+});
+
+
+
+
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });

@@ -1,0 +1,86 @@
+<div style="margin-top: 20px;">
+    <h3>Consulta: Cantidad de aplicaciones por tecnología</h3>
+    <label for="tecnologia">Tecnología:</label>
+    <input id="tecnologia" [(ngModel)]="tecnologia" placeholder="Ej. web/chrome" />
+
+    <button (click)="obtenerCantidadAplicaciones()">Consultar</button>
+
+    <div *ngIf="cantidadAplicaciones !== null" style="margin-top: 20px;">
+        <h4>Resultado:</h4>
+        <div class="scrollable-box">
+            <p>Cantidad de aplicaciones para "{{ tecnologia }}": {{ cantidadAplicaciones }}</p>
+        </div>
+    </div>
+</div>
+
+<hr />
+
+<div style="margin-top: 20px;">
+    <h3>Consulta: Aplicaciones similares por tecnologías compartidas</h3>
+    <label for="tituloAplicacion">Título de la aplicación:</label>
+    <input id="tituloAplicacion" [(ngModel)]="tituloAplicacion" placeholder="Ej. davv ai" />
+
+    <button (click)="obtenerAplicacionesSimilares()">Consultar</button>
+
+    <div *ngIf="aplicacionesSimilares.length > 0" style="margin-top: 20px;">
+        <h4>Aplicaciones similares a "{{ tituloAplicacion }}"</h4>
+        <div class="scrollable-box">
+            <ul>
+                <li *ngFor="let app of aplicacionesSimilares">
+                    {{ app.titulo }} - {{ app.coincidencias }} coincidencias
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div style="margin-top: 20px;">
+    <h3>Consulta: Aplicaciones por Creador</h3>
+    <label for="nombreCreador">Nombre del Creador:</label>
+    <input id="nombreCreador" [(ngModel)]="nombreCreador" placeholder="Ej. abdou guerguer" />
+  
+    <button (click)="obtenerAplicacionesPorCreador()">Consultar</button>
+  
+    <div *ngIf="aplicacionesPorCreador.length > 0" class="scrollable-box">
+      <h4>Aplicaciones:</h4>
+      <ul>
+        <li *ngFor="let app of aplicacionesPorCreador">{{ app }}</li>
+      </ul>
+    </div>
+  </div>
+  
+  <hr />
+  
+  <div style="margin-top: 20px;">
+    <h3>Consulta: Top 5 Tecnologías</h3>
+    <button (click)="obtenerTopTecnologias()">Consultar</button>
+  
+    <div *ngIf="topTecnologias.length > 0" class="scrollable-box">
+      <h4>Top Tecnologías:</h4>
+      <ul>
+        <li *ngFor="let tec of topTecnologias">
+          {{ tec.tecnologia }} - {{ tec.cantidadAplicaciones }} aplicaciones
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  <hr />
+  
+  <div style="margin-top: 20px;">
+    <h3>Consulta: Creadores que Nunca Han Trabajado Juntos</h3>
+    <label for="tecnologiasSeleccionadas">Tecnologías Seleccionadas (separadas por comas):</label>
+    <input id="tecnologiasSeleccionadas" [(ngModel)]="tecnologiasSeleccionadasString" placeholder="Ej. web/chrome, firebase" />
+  
+    <button (click)="obtenerCreadoresNuncaJuntos()">Consultar</button>
+  
+    <div *ngIf="creadoresNuncaJuntos.length > 0" class="scrollable-box">
+      <h4>Creadores:</h4>
+      <ul>
+        <li *ngFor="let par of creadoresNuncaJuntos">
+          {{ par.desarrollador1 }} y {{ par.desarrollador2 }}
+        </li>
+      </ul>
+    </div>
+  </div>
+  

@@ -13,7 +13,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./crud.component.css']
 })
 export class CrudComponent implements AfterViewInit {
-
   selectedType: string = 'Proyecto';
   nodes: any[] = [];
   filteredNodes: any[] = [];
@@ -165,6 +164,10 @@ export class CrudComponent implements AfterViewInit {
 
   deleteNode() {
     this.router.navigate(['/deleteNode']);
+  }
+
+  goToConsultas() {
+    this.router.navigate(['/consultas']);
   }
 
 }
