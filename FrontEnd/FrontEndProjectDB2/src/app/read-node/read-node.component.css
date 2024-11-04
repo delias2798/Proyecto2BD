@@ -1,0 +1,30 @@
+#main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  #container {
+    padding: 20px;
+    border: 1px solid #d3d3d3;
+    border-radius: 8px;
+    width: 300px;
+  }
+  
+  #container h2 {
+    margin-bottom: 20px;
+  }
+  
+  #container form {
+    margin-bottom: 20px;
+  }
+  
+  #container h3 {
+    margin-top: 20px;
+  }
+  
+  #container p {
+    margin: 5px 0;
+  }
+  
