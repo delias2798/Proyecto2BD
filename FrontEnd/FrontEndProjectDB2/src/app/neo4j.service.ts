@@ -28,7 +28,7 @@ export class Neo4jService {
   }
 
   createNode(type: string, properties: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/node/${type}`, { properties });
+    return this.http.post(`${this.apiUrl}/node/${type}`, properties);
   }
 
   updateNode(type: string, id: string, properties: any): Observable<any> {
@@ -67,6 +67,19 @@ export class Neo4jService {
     });
   }
   
+  getRegiones(): Observable<string[]> {
+    return this.http.get<string[]>(`${this.apiUrl}/consultas/regiones`);
+  }
+  
+  getAplicacionesPorRegion(region: string): Observable<string[]> {
+    return this.http.get<string[]>(`${this.apiUrl}/consultas/aplicacionesPorRegion`, {
+      params: { region }
+    });
+  }
+
+  cleanDatabase(): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/cleanDatabase`);
+  }
 
   
 }

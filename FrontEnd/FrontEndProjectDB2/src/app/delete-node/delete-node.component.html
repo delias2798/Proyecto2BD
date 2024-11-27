@@ -1,20 +1,47 @@
 <div id="main-container">
-    <div id="container">
-      <h2>Eliminar Nodo</h2>
-      <!-- Formulario para ingresar el ID del nodo a eliminar -->
-      <form>
-        <div style="display: flex; align-items: center; margin-bottom: 10px;">
-          <label for="id" style="width: 100px;">ID del Nodo:</label>
-          <input type="text" id="id" style="flex: 1; padding: 5px;" placeholder="Ingresa el ID del Nodo " />
-        </div>
-        <button type="button" style="padding: 8px 16px; margin-top: 10px; width: 100%;">Eliminar Nodo</button>
-      </form>
-  
-      <!-- Mensaje de confirmación de eliminación que tal vez se podria poner -->
-      <!-- <div id="confirmation-message" style="margin-top: 20px; display: none;">
-        <p style="color: red;">Node with ID <strong>123</strong> has been deleted.</p>
-      </div> -->
+  <div id="container">
+    <h2>Eliminar Nodo</h2>
+    <!-- Formulario para ingresar el ID del nodo a eliminar -->
+    <form>
+      <div style="display: flex; align-items: center; margin-bottom: 10px;">
+        <label for="type" style="width: 100px;">Tipo de Nodo:</label>
+        <input
+          type="text"
+          id="type"
+          [(ngModel)]="nodeType"
+          name="nodeType"
+          style="flex: 1; padding: 5px;"
+          placeholder="Ej. Proyecto, Tecnologia, etc."
+        />
+      </div>
+      <div style="display: flex; align-items: center; margin-bottom: 10px;">
+        <label for="id" style="width: 100px;">ID del Nodo:</label>
+        <input
+          type="text"
+          id="id"
+          [(ngModel)]="nodeId"
+          name="nodeId"
+          style="flex: 1; padding: 5px;"
+          placeholder="Ingresa el ID del Nodo"
+        />
+      </div>
+      <button
+        type="button"
+        (click)="deleteNode()"
+        style="padding: 8px 16px; margin-top: 10px; width: 100%;"
+      >
+        Eliminar Nodo
+      </button>
+    </form>
 
+    <!-- Mensaje de confirmación de eliminación -->
+    <div *ngIf="confirmationMessage" id="confirmation-message" style="margin-top: 20px;">
+      <p style="color: green;">{{ confirmationMessage }}</p>
+    </div>
+
+    <!-- Mensaje de error -->
+    <div *ngIf="errorMessage" id="error-message" style="margin-top: 20px;">
+      <p style="color: red;">{{ errorMessage }}</p>
     </div>
   </div>
-  
+</div>

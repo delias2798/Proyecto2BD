@@ -11,12 +11,26 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./load-csv.component.css']
 })
 export class LoadCsvComponent {
+  isDatabaseCleaned = false;
   
   constructor(private neo4jService: Neo4jService, private router: Router) {}
 
   ngOnInit() {
     console.log("LoadCsvComponent is loaded");
   }
+
+  cleanDatabase() {
+    this.neo4jService.cleanDatabase().subscribe(
+      (response) => {
+        console.log(response.message);
+        this.isDatabaseCleaned = true;
+      },
+      (error) => {
+        console.error('Error cleaning database:', error);
+      }
+    );
+  }
+
 
   loadCsvData() {
     this.neo4jService.loadCsv().subscribe(

@@ -1,1 +1,8 @@
-<button *ngIf="true" (click)="loadCsvData()">Cargar Datos del CSV</button>
+<div style="margin-top: 20px;">
+    <h3>Database Management</h3>
+    <button (click)="cleanDatabase()">Clean Database</button>
+
+    <div *ngIf="isDatabaseCleaned" style="margin-top: 20px;">
+        <button (click)="loadCsvData()">Load CSV</button>
+    </div>
+</div>

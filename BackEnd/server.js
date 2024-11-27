@@ -79,36 +79,6 @@ app.post('/api/loadCsv', async (req, res) => {
     MERGE (equipo)-[:CREA]->(proyecto) 
     MERGE (proyecto)-[:UBICADO_EN]->(ubicacion)
   `;
-
-  // LOAD CSV WITH HEADERS FROM 'file:///archivo_filtrado_normalizado_final.csv' AS row 
-  // MERGE (proyecto:Proyecto { 
-  //     titulo: row.Title, 
-  //     whatItDoes: row["What it Does"], 
-  //     builtWith: row["Built With"], 
-  //     by: row.By, 
-  //     location: row.Location 
-  // }) 
-  // MERGE (ubicacion:Ubicacion {location: row.Location}) 
-
-  // // Pasar el proyecto y ubicación a la siguiente cláusula WITH
-  // WITH row, proyecto, ubicacion 
-
-  // // Descomponer la lista de tecnologías
-  // UNWIND SPLIT(row["Built With"], ",") AS tecnologiaNombre 
-  // MERGE (tecnologia:Tecnologia {nombreAplicacion: TRIM(tecnologiaNombre)}) 
-  // MERGE (proyecto)-[:USO_TECNOLOGIA]->(tecnologia) 
-
-  // // Descomponer la lista de desarrolladores
-  // WITH row, proyecto, ubicacion // Reutilizar el proyecto y ubicación
-  // UNWIND SPLIT(row.By, ",") AS desarrolladorNombre 
-  // MERGE (desarrollador:Desarrollador {nombreD: TRIM(desarrolladorNombre)}) 
-  // MERGE (equipo:EquipoTrabajo {nombre: row.By}) 
-  // MERGE (equipo)-[:CONFORMADO_POR]->(desarrollador)
-  // MERGE (desarrollador)-[:FORMA_PARTE]->(equipo)
-  // MERGE (proyecto)-[:CREADO_POR]->(equipo)
-  // MERGE (equipo)-[:CREA]->(proyecto) 
-  // MERGE (proyecto)-[:UBICADO_EN]->(ubicacion)
-
   try {
     await session.run(loadCsvQuery);
     res.json({ message: 'CSV data successfully loaded into Neo4j' });
@@ -154,6 +124,27 @@ app.post('/api/createNode', async (req, res) => {
 //     session.close();
 //   }
 // });
+
+app.delete('/api/cleanDatabase', async (req, res) => {
+  const session = driver.session();
+  try {
+    await session.run(`MATCH (a)-[r]->() DELETE a, r`);
+    await session.run(`MATCH (a) DELETE a`);
+
+    const result = await session.run(`MATCH (a)-[r]->(b) RETURN a, r, b LIMIT 1`);
+    if (result.records.length === 0) {
+      res.json({ message: 'Database cleaned successfully' });
+    } else {
+      res.status(500).json({ message: 'Failed to clean the database completely' });
+    }
+  } catch (error) {
+    console.error("Error cleaning database:", error);
+    res.status(500).json({ message: 'Error cleaning database', error });
+  } finally {
+    await session.close();
+  }
+});
+
 
 app.get('/api/nodes', async (req, res) => {
   const session = driver.session();
@@ -242,6 +233,8 @@ app.get('/api/node/:type/:id', async (req, res) => {
 app.post('/api/node/:type', async (req, res) => {
   const { type } = req.params;
   const properties = req.body;
+
+  const session = driver.session();
   try {
     const result = await session.run(
       `CREATE (n:${type} $properties) RETURN n`,
@@ -250,8 +243,10 @@ app.post('/api/node/:type', async (req, res) => {
     const node = result.records[0].get('n').properties;
     res.status(201).json(node);
   } catch (error) {
-    console.error(error);
+    console.error('Error creating node:', error);
     res.status(500).json({ error: 'Error creating node' });
+  } finally {
+    session.close();
   }
 });
 
@@ -446,6 +441,51 @@ app.get('/api/consultas/creadoresNuncaJuntos', async (req, res) => {
   }
 });
 
+// Endpoint para obtener todas las regiones registradas en la base de datos
+app.get('/api/consultas/regiones', async (req, res) => {
+  const session = driver.session();
+  const query = `
+    MATCH (d:Desarrollador)-[:FORMA_PARTE]->(:EquipoTrabajo)-[:CREA]->(p:Proyecto)
+    RETURN DISTINCT p.location AS region
+    ORDER BY region;
+  `;
+
+  try {
+    const result = await session.run(query);
+    const regiones = result.records
+      .map(record => record.get('region'))
+      .filter(region => region !== null); // Filtrar valores nulos si los hay
+    res.json(regiones);
+  } catch (error) {
+    console.error("Error executing query:", error);
+    res.status(500).json({ message: 'Error executing query', error });
+  } finally {
+    await session.close();
+  }
+});
+
+// CONSULTA 6: Lista de aplicaciones que tienen desarrolladores de una región en particular
+app.get('/api/consultas/aplicacionesPorRegion', async (req, res) => {
+  const { region } = req.query;
+  const session = driver.session();
+
+  const query = `
+    MATCH (p:Proyecto {location: $region})
+    RETURN p.titulo AS Aplicacion
+    ORDER BY p.titulo;
+  `;
+
+  try {
+    const result = await session.run(query, { region });
+    const aplicaciones = result.records.map(record => record.get('Aplicacion'));
+    res.json(aplicaciones);
+  } catch (error) {
+    console.error("Error executing query:", error);
+    res.status(500).json({ message: 'Error executing query', error });
+  } finally {
+    await session.close();
+  }
+});
 
 
 

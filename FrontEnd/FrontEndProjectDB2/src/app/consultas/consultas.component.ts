@@ -26,7 +26,16 @@ export class ConsultasComponent {
   tecnologiasSeleccionadasString = ''; // Usado para la entrada de texto
   creadoresNuncaJuntos: { desarrollador1: string, desarrollador2: string }[] = [];
 
+  //Para Consulta 6
+  regiones: string[] = []; // Lista de regiones
+  regionSeleccionada = ''; // Región seleccionada por el usuario
+  aplicacionesPorRegion: string[] = []
+
   constructor(private neo4jService: Neo4jService) {}
+
+  ngOnInit() {
+    this.obtenerRegiones(); // Cargar todas las regiones al iniciar el componente
+  }
 
   obtenerCantidadAplicaciones() {
     if (this.tecnologia) {
@@ -72,6 +81,23 @@ export class ConsultasComponent {
       );
     } else {
       alert('Debe seleccionar al menos dos tecnologías.');
+    }
+  }
+
+  // Para consulta 6
+  obtenerRegiones() {
+    this.neo4jService.getRegiones().subscribe(
+      (data) => this.regiones = data,
+      (error) => console.error('Error fetching regiones:', error)
+    );
+  }
+  
+  obtenerAplicacionesPorRegion() {
+    if (this.regionSeleccionada) {
+      this.neo4jService.getAplicacionesPorRegion(this.regionSeleccionada).subscribe(
+        (data) => this.aplicacionesPorRegion = data,
+        (error) => console.error('Error fetching data:', error)
+      );
     }
   }
 
